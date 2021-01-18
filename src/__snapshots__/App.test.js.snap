@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders learn react link 1`] = `
+<div>
+  <button
+    class="Pin Pin--red"
+  >
+    MASTER
+  </button>
+  <button
+    class="Pin Pin--blue"
+  >
+    MASTER
+  </button>
+  <button
+    class="Pin Pin--yellow"
+  >
+    MASTER
+  </button>
+  <button
+    class="Pin Pin--green"
+  >
+    MASTER
+  </button>
+</div>
+`;

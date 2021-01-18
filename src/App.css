@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+
+.Pin{
+  width: 100px;
+  height: 50px;
+}
+
+.Pin--red {
+  background-color: red;
+}
+
+.Pin--blue {
+  background-color: blue;
+}
+
+.Pin--yellow {
+  background-color: yellow;
+}
+
+.Pin--green {
+  background-color: green;
+}
+
