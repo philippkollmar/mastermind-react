@@ -35,8 +35,6 @@ describe('Model', () => {
         })
         describe('changeColor', () => {
             it('should use index', () => {
-               const {changeColor} = createModel(model);
-                expect(changeColor(0)).toEqual(0)
             })
         })
 
