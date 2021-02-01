@@ -2,25 +2,49 @@
 
 exports[`renders learn react link 1`] = `
 <div>
-  <button
-    class="Pin Pin--red"
-  >
-    MASTER
-  </button>
-  <button
-    class="Pin Pin--red"
-  >
-    MASTER
-  </button>
-  <button
-    class="Pin Pin--red"
-  >
-    MASTER
-  </button>
-  <button
-    class="Pin Pin--red"
-  >
-    MASTER
-  </button>
+  <div>
+    <button
+      class="Pin Pin--red"
+    >
+      MASTER
+    </button>
+    <button
+      class="Pin Pin--red"
+    >
+      MASTER
+    </button>
+    <button
+      class="Pin Pin--red"
+    >
+      MASTER
+    </button>
+    <button
+      class="Pin Pin--red"
+    >
+      MASTER
+    </button>
+  </div>
+  <div>
+    <button
+      class="Round Round--red"
+    >
+      MASTER
+    </button>
+    <button
+      class="Round Round--red"
+    >
+      MASTER
+    </button>
+    <button
+      class="Round Round--red"
+    >
+      MASTER
+    </button>
+    <button
+      class="Round Round--red"
+    >
+      MASTER
+    </button>
+  </div>
 </div>
 `;

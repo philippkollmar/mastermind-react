@@ -4,14 +4,16 @@ import { cloneDeep } from 'lodash';
 import * as colors from 'mastermind/src/colors';
 const { RED, BLUE, YELLOW, GREEN } = colors;
 
-
-export function initialModel() {
-    const codeAi = defaultLogic.generateCode(0);
+export function initialModel(logic = defaultLogic) {
+    const randomFn = () => Math.random();
+    const randomCode = logic.generateCode(randomFn);
     return {
+        //Spielercode
         assumedColors: [RED, RED, RED, RED],
+        //Rundenanzahl
         rounds: [],
-        code: codeAi,
-        result: [NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL]
+        //Vorgegebener Code
+        code: randomCode,
 }
 }
 
@@ -33,7 +35,7 @@ export function createModel(model, setModel, logic = defaultLogic) {
             newModel.rounds.push({
                 round: 1,
                 assumedColors: model.assumedColors,
-                result: logic.checkCode()
+                result: logic.checkCode(newModel.code,newModel.assumedColors, randomFn)
             })
             setModel(newModel)
         }

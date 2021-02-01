@@ -75,6 +75,45 @@
 }
 
 
+.Round{
+  width: 100px;
+  height: 50px;
+}
+
+.Round--red {
+  background-color: red;
+}
+
+.Round--blue {
+  background-color: blue;
+}
+
+.Round--yellow {
+  background-color: yellow;
+}
+
+.Round--green {
+  background-color: green;
+}
+
+.Round--purple {
+  background-color: purple;
+}
+
+.Round--orange {
+  background-color: orange;
+}
+
+.Round--pink {
+  background-color: pink;
+}
+
+.Round--brown {   
+  background-color: brown;
+}
+
+
+
 
 
 
