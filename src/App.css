@@ -71,48 +71,25 @@
 }
 
 .Pin--brown {   
-  background-color: brown;
+  background-color: rgb(59, 42, 6);
 }
 
-
-.Round{
-  width: 100px;
-  height: 50px;
+.Hint{
+  width: 50px;
+  height: 25px;
 }
 
-.Round--red {
-  background-color: red;
+.Hint--fits{
+ background-color: black;
 }
 
-.Round--blue {
-  background-color: blue;
-}
+.Hint--partially{
+  background-color: grey;
+ }
 
-.Round--yellow {
-  background-color: yellow;
-}
-
-.Round--green {
-  background-color: green;
-}
-
-.Round--purple {
-  background-color: purple;
-}
-
-.Round--orange {
-  background-color: orange;
-}
-
-.Round--pink {
-  background-color: pink;
-}
-
-.Round--brown {   
-  background-color: brown;
-}
-
-
+ .Hint--partially{
+  background-color: white;
+ }
 
 
 

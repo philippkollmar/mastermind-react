@@ -15,7 +15,6 @@ describe('Model', () => {
         })
         it('should have code with 4 colors', () => {
             const logic = { generateCode: jest.fn(() => [RED, GREEN, BLUE, YELLOW]) }
-            console.log("+++++++++++" + generateCode)
             expect(initialModel(logic)).toEqual(expect.objectContaining({ code: [RED, GREEN, BLUE, YELLOW] }))
         })
     })
@@ -73,7 +72,7 @@ describe('createModel', () => {
             { startingColor: { assumedColors: [PURPLE, RED, RED, RED] }, resultModel: { assumedColors: [ORANGE, RED, RED, RED] } },
             { startingColor: { assumedColors: [ORANGE, RED, RED, RED] }, resultModel: { assumedColors: [PINK, RED, RED, RED] } },
             { startingColor: { assumedColors: [PINK, RED, RED, RED] }, resultModel: { assumedColors: [BROWN, RED, RED, RED] } },
-            { startingColor: { assumedColors: [BROWN, RED, RED, RED] }, resultModel: { assumedColors: [RED, RED, RED, RED] } }
+           
         ].forEach(({ startingColor, resultModel }) => {
 
             it(`should change to the next color of colors`, () => {

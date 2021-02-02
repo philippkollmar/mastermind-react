@@ -13,8 +13,12 @@ export function initialModel(logic = defaultLogic) {
         //Rundenanzahl
         rounds: [],
         //Vorgegebener Code
-        code: randomCode,
+        code: randomCode
 }
+}
+
+export const checkRandom = () => {
+   return Math.floor(Math.random() * Math.floor(3));
 }
 
 export function createModel(model, setModel, logic = defaultLogic) {
@@ -23,10 +27,9 @@ export function createModel(model, setModel, logic = defaultLogic) {
         changeColor: (index) => {
             const newModel = cloneDeep(model)
             let colorList = Object.keys(colors)
-            colorList = colorList.slice(0, colorList.length - 1)
+            colorList = colorList.slice(0, colorList.length)
             const colorIndex = colorList.findIndex((c) => { return model.assumedColors[index] === c })
-            const newColorIndex = (colorIndex < colorList.length - 1) ? colorIndex + 1 : 0;
-
+            const newColorIndex = (colorIndex < colorList.length-1) ? colorIndex + 1 : 0;
             newModel.assumedColors[index] = colorList[newColorIndex];
             setModel(newModel);
         },
@@ -35,7 +38,7 @@ export function createModel(model, setModel, logic = defaultLogic) {
             newModel.rounds.push({
                 round: 1,
                 assumedColors: model.assumedColors,
-                result: logic.checkCode(newModel.code,newModel.assumedColors, randomFn)
+                result: logic.checkCode(newModel.code,newModel.assumedColors, checkRandom)
             })
             setModel(newModel)
         }

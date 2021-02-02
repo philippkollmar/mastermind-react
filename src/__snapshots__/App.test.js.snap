@@ -23,27 +23,8 @@ exports[`renders learn react link 1`] = `
     >
       MASTER
     </button>
-  </div>
-  <div>
-    <button
-      class="Round Round--red"
-    >
-      MASTER
-    </button>
-    <button
-      class="Round Round--red"
-    >
-      MASTER
-    </button>
-    <button
-      class="Round Round--red"
-    >
-      MASTER
-    </button>
-    <button
-      class="Round Round--red"
-    >
-      MASTER
+    <button>
+      Check
     </button>
   </div>
 </div>
