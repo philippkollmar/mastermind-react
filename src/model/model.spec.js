@@ -1,7 +1,8 @@
-import { initialModel, createModel } from "./model"
+import { generateCode } from 'mastermind/src/mastermind';
+import { initialModel, createModel, randomFn } from "./model"
 import { RED, BLUE, GREEN, YELLOW, PURPLE, ORANGE, PINK, BROWN } from "mastermind/src/colors";
+import * as colors from "mastermind/src/colors";
 import { FITS, PARTIALLY, NOT_AT_ALL } from "mastermind/src/hint";
-import { generateCode } from "mastermind/src/mastermind";
 
 describe('Model', () => {
 
@@ -12,11 +13,9 @@ describe('Model', () => {
         it('should have rounds', () => {
             expect(initialModel()).toEqual(expect.objectContaining({ rounds: [] }))
         })
-        it('should have code', () => {
-            expect(initialModel()).toEqual(expect.objectContaining({ code: [GREEN, GREEN, GREEN, GREEN]}))
-        })
-        it('should have result', () => {
-            expect(initialModel()).toEqual(expect.objectContaining({ result: [NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL]}))
+        it('should have code with 4 colors', () => {
+            const logic = { generateCode: jest.fn(() => [RED, GREEN, BLUE, YELLOW]) }
+            expect(initialModel(logic)).toEqual(expect.objectContaining({ code: [RED, GREEN, BLUE, YELLOW] }))
         })
     })
 })
@@ -73,7 +72,7 @@ describe('createModel', () => {
             { startingColor: { assumedColors: [PURPLE, RED, RED, RED] }, resultModel: { assumedColors: [ORANGE, RED, RED, RED] } },
             { startingColor: { assumedColors: [ORANGE, RED, RED, RED] }, resultModel: { assumedColors: [PINK, RED, RED, RED] } },
             { startingColor: { assumedColors: [PINK, RED, RED, RED] }, resultModel: { assumedColors: [BROWN, RED, RED, RED] } },
-            { startingColor: { assumedColors: [BROWN, RED, RED, RED] }, resultModel: { assumedColors: [RED, RED, RED, RED] } }
+           
         ].forEach(({ startingColor, resultModel }) => {
 
             it(`should change to the next color of colors`, () => {
@@ -104,9 +103,27 @@ describe('createModel', () => {
             it("should contain a rating", () => {
                 expect(setModelSpy.mock.calls[0][0].rounds[0]).toEqual(expect.objectContaining({ result: expectedResult }))
             })
-            xit("should call checkCode with code, guess and randomFn ", () => {
-                expect(logicSpy.checkCode()).toHaveBeenCalledWith(code, guess, randomFn)
+            it("should call checkCode with code, guess and randomFn ", () => {
+                const { check } = init({
+                    assumedColors: [RED, RED, RED, RED],
+                    rounds: [],
+                    code: [RED, BLUE, YELLOW, GREEN],
+                    result: [NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL]
+                })
+                check()
+                expect(logicSpy.checkCode).toHaveBeenCalledWith([RED, BLUE, YELLOW, GREEN], [RED, RED, RED, RED], expect.any(Function))
             })
+            it("should call checkCode with code, guess and randomFn ", () => {
+                const { check } = init({
+                    assumedColors: [RED, RED, RED, RED],
+                    rounds: [{round: 1, assumedColors: [RED, RED, RED, RED], result: [NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL] }],
+                    code: [RED, BLUE, YELLOW, GREEN],
+                    result: [NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL]
+                })
+                check()
+                expect(setModelSpy.mock.calls[0][0].rounds.length).toEqual(2)
+            })
+
         })
     })
 })

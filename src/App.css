@@ -71,9 +71,25 @@
 }
 
 .Pin--brown {   
-  background-color: brown;
+  background-color: rgb(59, 42, 6);
 }
 
+.Hint{
+  width: 50px;
+  height: 25px;
+}
+
+.Hint--fits{
+ background-color: black;
+}
+
+.Hint--partially{
+  background-color: grey;
+ }
+
+ .Hint--partially{
+  background-color: white;
+ }
 
 
 
