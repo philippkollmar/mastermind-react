@@ -3,9 +3,10 @@ import * as game from 'mastermind/src/game'
 import * as defaultLogic from 'mastermind/src/mastermind';
 import { cloneDeep } from 'lodash';
 import * as colors from 'mastermind/src/colors';
+import { useState } from "react";
 const { RED, BLUE, YELLOW, GREEN } = colors;
 
-let currentRound = 0;
+let currentRound = -1
 
 export function initialModel(logic = defaultLogic) {
     const randomFn = () => Math.random();
@@ -16,10 +17,12 @@ export function initialModel(logic = defaultLogic) {
         //Rundenanzahl
         rounds: [],
         //Vorgegebener Code
-        code: randomCode
-
+        code: randomCode,
+        gamestate: []
     }
 }
+
+
 
 export const checkRandom = () => {
     return Math.floor(Math.random() * Math.floor(3));
@@ -40,14 +43,26 @@ export function createModel(model, setModel, logic = defaultLogic) {
         check: () => {
             const newModel = cloneDeep(model)
             newModel.rounds.push({
-                round: currentRound += 1,
+                round: currentRound++,
                 assumedColors: model.assumedColors,
                 result: logic.checkCode(newModel.code, newModel.assumedColors, checkRandom),
-                //game: logic.checkGame(newModel.result, newModel.round)
             })
-            
+            newModel.gamestate = logic.checkGame(newModel.rounds[currentRound].result, currentRound)
             setModel(newModel)
-            
+        },
+        reset: () => {
+            const randomFn = () => Math.random();
+            const randomCode = logic.generateCode(randomFn);
+            const emptyModel = {
+                //Spielercode
+                assumedColors: [RED, RED, RED, RED],
+                //Rundenanzahl
+                rounds: [],
+                //Vorgegebener Code
+                code: randomCode,
+                gamestate: []
+            }
+            setModel(emptyModel)
         }
     }
 }
