@@ -1,8 +1,11 @@
 import { FITS, PARTIALLY, NOT_AT_ALL } from "mastermind/src/hint";
+import * as game from 'mastermind/src/game'
 import * as defaultLogic from 'mastermind/src/mastermind';
 import { cloneDeep } from 'lodash';
 import * as colors from 'mastermind/src/colors';
 const { RED, BLUE, YELLOW, GREEN } = colors;
+
+let currentRound = 0;
 
 export function initialModel(logic = defaultLogic) {
     const randomFn = () => Math.random();
@@ -14,11 +17,12 @@ export function initialModel(logic = defaultLogic) {
         rounds: [],
         //Vorgegebener Code
         code: randomCode
-}
+
+    }
 }
 
 export const checkRandom = () => {
-   return Math.floor(Math.random() * Math.floor(3));
+    return Math.floor(Math.random() * Math.floor(3));
 }
 
 export function createModel(model, setModel, logic = defaultLogic) {
@@ -29,18 +33,21 @@ export function createModel(model, setModel, logic = defaultLogic) {
             let colorList = Object.keys(colors)
             colorList = colorList.slice(0, colorList.length)
             const colorIndex = colorList.findIndex((c) => { return model.assumedColors[index] === c })
-            const newColorIndex = (colorIndex < colorList.length-1) ? colorIndex + 1 : 0;
+            const newColorIndex = (colorIndex < colorList.length - 1) ? colorIndex + 1 : 0;
             newModel.assumedColors[index] = colorList[newColorIndex];
             setModel(newModel);
         },
         check: () => {
             const newModel = cloneDeep(model)
             newModel.rounds.push({
-                round: 1,
+                round: currentRound += 1,
                 assumedColors: model.assumedColors,
-                result: logic.checkCode(newModel.code,newModel.assumedColors, checkRandom)
+                result: logic.checkCode(newModel.code, newModel.assumedColors, checkRandom),
+                //game: logic.checkGame(newModel.result, newModel.round)
             })
+            
             setModel(newModel)
+            
         }
     }
 }

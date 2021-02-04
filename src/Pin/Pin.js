@@ -5,7 +5,7 @@ export default function Pin({color, change}){
     const col = color.toLowerCase();
     const classes = ["Pin"].concat(["Pin--" + col])
 
-    return(<button className={classes.join(" ")} onClick={change}>MASTER</button>)
+    return(<button className={classes.join(" ")} onClick={change}></button>)
 }
 Pin.propTypes = {
     color: PropTypes.oneOf(Object.keys(colors)),
