@@ -1,9 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import Pin from './Pin/Pin'
 import Hint from './Hint/Hint'
 import Round from './Round/Round'
-import { RED, BLUE, YELLOW, GREEN } from "mastermind/src/colors"
 import { useState } from 'react';
 import { initialModel, createModel } from './model/model';
 

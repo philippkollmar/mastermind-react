@@ -1,22 +1,21 @@
 import { fireEvent, render } from "@testing-library/react"
-import {RED, BLUE} from "mastermind/src/colors"
+import { PARTIALLY, FITS, NOT_AT_ALL } from "mastermind/src/hint"
 import Hint from "./Hint"
 
 describe ('Round', () => {
 
     describe ('Color', () => {
-        it('should be black when property-color is black', () => {
-            const {container} = render(<Hint color={RED} />)
-            expect(container.querySelector(".Hint--red")).not.toBeNull()
+        it('should be black when color fits', () => {
+            const {container} = render(<Hint color={FITS} />)
+            expect(container.querySelector(".Hint--fits")).not.toBeNull()
         })
-        it('should be blue when property-color is blue', () => {
-            const {container} = render(<Hint color={BLUE} />)
-            expect(container.querySelector(".Hint--blue")).not.toBeNull()
+        it('should be grey when color fits Partially', () => {
+            const {container} = render(<Hint color={PARTIALLY} />)
+            expect(container.querySelector(".Hint--partially")).not.toBeNull()
         })
-        it('should warn when property-color is black', () => {
-            jest.spyOn(console, "error").mockImplementation(() => {})
-            const {container} = render(<Hint color="BLACK" />)
-            expect(console.error).toHaveBeenCalled()
+        it('should be grey when color doesnt fit', () => {
+            const {container} = render(<Hint color={NOT_AT_ALL} />)
+            expect(container.querySelector(".Hint--not_at_all")).not.toBeNull()
         })
     })
    
