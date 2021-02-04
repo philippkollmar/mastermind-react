@@ -1,16 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
 import Pin from './Pin/Pin'
 import Hint from './Hint/Hint'
 import Round from './Round/Round'
-import { RED, BLUE, YELLOW, GREEN } from "mastermind/src/colors"
 import { useState } from 'react';
 import { initialModel, createModel } from './model/model';
 
 function App() {
   const [model, setModel] = useState(initialModel())
   const { getAssumedColor, changeColor, check } = createModel(model, setModel)
-  console.log(getAssumedColor(0))
   return (
     <div>
       <div>
@@ -21,8 +18,8 @@ function App() {
         <button onClick={check} >Check</button>
       </div>
       { model.rounds.map((round) => {
-        console.log(model.rounds)
-        return (<div>
+        console.log(model)
+        return (<div className="rounds">
           <Pin color={round.assumedColors[0]} change={() => { }}></Pin>
           <Pin color={round.assumedColors[1]} change={() => { }}></Pin>
           <Pin color={round.assumedColors[2]} change={() => { }}></Pin>
