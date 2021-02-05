@@ -2,6 +2,9 @@
 
 exports[`renders learn react link 1`] = `
 <div>
+  <h1>
+    MASTERMIND
+  </h1>
   <div>
     <button
       class="Pin Pin--red"

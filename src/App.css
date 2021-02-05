@@ -95,6 +95,14 @@
   opacity: 0.6;
  }
 
+ .End--WON {
+   background-color: greenyellow; 
+ }
+
+ .End--LOST {
+  background-color: red; 
+}
+
 
 
 

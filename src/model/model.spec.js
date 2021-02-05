@@ -3,7 +3,7 @@ import { initialModel, createModel, randomFn } from "./model"
 import { RED, BLUE, GREEN, YELLOW, PURPLE, ORANGE, PINK, BROWN } from "mastermind/src/colors";
 import * as colors from "mastermind/src/colors";
 import { FITS, PARTIALLY, NOT_AT_ALL } from "mastermind/src/hint";
-
+import { WON, PENDING, LOSE } from "mastermind/src/game";
 describe('Model', () => {
 
     describe('initialModel', () => {
@@ -103,7 +103,7 @@ describe('createModel', () => {
             it("should contain a rating", () => {
                 expect(setModelSpy.mock.calls[0][0].rounds[0]).toEqual(expect.objectContaining({ result: expectedResult }))
             })
-            it("should call checkCode with code, guess and randomFn ", () => {
+            fit("should call checkCode with code, guess and randomFn ", () => {
                 const { check } = init({
                     assumedColors: [RED, RED, RED, RED],
                     rounds: [],
@@ -116,14 +116,13 @@ describe('createModel', () => {
             it("should call checkCode with code, guess and randomFn ", () => {
                 const { check } = init({
                     assumedColors: [RED, RED, RED, RED],
-                    rounds: [{round: 1, assumedColors: [RED, RED, RED, RED], result: [NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL] }],
+                    rounds: [{round: 1, assumedColors: [RED, RED, RED, RED]}],
                     code: [RED, BLUE, YELLOW, GREEN],
-                    result: [NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL]
+                    result:[NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL]
                 })
                 check()
                 expect(setModelSpy.mock.calls[0][0].rounds.length).toEqual(2)
-            })
-
+            }) 
         })
     })
 })
