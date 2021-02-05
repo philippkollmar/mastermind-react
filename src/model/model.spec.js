@@ -26,6 +26,7 @@ describe('createModel', () => {
         setModelSpy = jest.fn()
         logicSpy = jest.createMockFromModule('mastermind/src/mastermind');
         logicSpy.checkCode.mockReturnValueOnce(result)
+        logicSpy.checkGame.mockReturnValueOnce(result)
         return createModel(model, setModelSpy, logicSpy)
     }
 
@@ -103,12 +104,12 @@ describe('createModel', () => {
             it("should contain a rating", () => {
                 expect(setModelSpy.mock.calls[0][0].rounds[0]).toEqual(expect.objectContaining({ result: expectedResult }))
             })
-            fit("should call checkCode with code, guess and randomFn ", () => {
+            it("should call checkCode with code, guess and randomFn ", () => {
                 const { check } = init({
                     assumedColors: [RED, RED, RED, RED],
                     rounds: [],
                     code: [RED, BLUE, YELLOW, GREEN],
-                    result: [NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL]
+                    gamestate: [PENDING]
                 })
                 check()
                 expect(logicSpy.checkCode).toHaveBeenCalledWith([RED, BLUE, YELLOW, GREEN], [RED, RED, RED, RED], expect.any(Function))

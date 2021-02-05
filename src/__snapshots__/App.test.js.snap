@@ -1,11 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders learn react link 1`] = `
-<div>
+<div
+  class="container"
+>
   <h1>
     MASTERMIND
   </h1>
-  <div>
+  <div
+    class="UserColor"
+  >
     <button
       class="Pin Pin--red"
     />
@@ -18,7 +22,9 @@ exports[`renders learn react link 1`] = `
     <button
       class="Pin Pin--red"
     />
-    <button>
+    <button
+      class="CheckButton"
+    >
       Check
     </button>
   </div>
