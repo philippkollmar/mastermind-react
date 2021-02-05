@@ -62,6 +62,7 @@ export function createModel(model, setModel, logic = defaultLogic) {
                 code: randomCode,
                 gamestate: []
             }
+            currentRound = -1;
             setModel(emptyModel)
         }
     }

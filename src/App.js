@@ -12,6 +12,7 @@ function App() {
   const { getAssumedColor, changeColor, check, reset } = createModel(model, setModel)
   return (
     <div>
+      <h1>MASTERMIND</h1>
       <div>
         <Pin color={getAssumedColor(0)} change={() => changeColor(0)}></Pin>
         <Pin color={getAssumedColor(1)} change={() => changeColor(1)}></Pin>
@@ -20,6 +21,8 @@ function App() {
         <button onClick={check}>Check</button>
       </div>
       { model.rounds.map((round) => {
+        let userRound;
+        console.log(model)
         if (model.gamestate === "PENDING") {
           return (<div className="rounds">
             <Pin color={round.assumedColors[0]} change={() => { }}></Pin>
