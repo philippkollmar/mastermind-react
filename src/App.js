@@ -22,7 +22,6 @@ function App() {
       </div>
       { model.rounds.map((round) => {
         let userRound;
-        console.log(model)
         if (model.gamestate === "PENDING") {
           return (<div className="rounds">
             <Pin color={round.assumedColors[0]} change={() => { }}></Pin>

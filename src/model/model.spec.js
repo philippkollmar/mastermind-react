@@ -103,11 +103,12 @@ describe('createModel', () => {
             it("should contain a rating", () => {
                 expect(setModelSpy.mock.calls[0][0].rounds[0]).toEqual(expect.objectContaining({ result: expectedResult }))
             })
-            it("should call checkCode with code, guess and randomFn ", () => {
+            fit("should call checkCode with code, guess and randomFn ", () => {
                 const { check } = init({
                     assumedColors: [RED, RED, RED, RED],
                     rounds: [],
                     code: [RED, BLUE, YELLOW, GREEN],
+                    result: [NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL]
                 })
                 check()
                 expect(logicSpy.checkCode).toHaveBeenCalledWith([RED, BLUE, YELLOW, GREEN], [RED, RED, RED, RED], expect.any(Function))
@@ -115,23 +116,13 @@ describe('createModel', () => {
             it("should call checkCode with code, guess and randomFn ", () => {
                 const { check } = init({
                     assumedColors: [RED, RED, RED, RED],
-                    rounds: [{round: 1, assumedColors: [RED, RED, RED, RED], result: [NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL] }],
+                    rounds: [{round: 1, assumedColors: [RED, RED, RED, RED]}],
                     code: [RED, BLUE, YELLOW, GREEN],
+                    result:[NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL]
                 })
                 check()
                 expect(setModelSpy.mock.calls[0][0].rounds.length).toEqual(2)
             }) 
-        })
-        describe('gamestate', () => {
-            it("should", () => {
-                const { gamestate } = init({
-                    assumedColors: [RED, RED, RED, RED],
-                    rounds: [{round: 1, assumedColors: [RED, RED, RED, RED], result: [NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL, NOT_AT_ALL] }],
-                    code: [RED, BLUE, YELLOW, GREEN],
-                    gamestate: PENDING
-                }) 
-
-            })
         })
     })
 })
