@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  box-sizing: border-box;
+  background-color: cadetblue;
 }
 
 .App-logo {
@@ -37,9 +39,62 @@
   }
 }
 
+h1{
+  text-align: center;
+  font-family: 'Segoe UI';
+}
+.container {
+ background-color: rgb(255, 255, 255);
+ border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40em;
+}
+
+.UserColor {
+  text-align: center;
+  padding: 1em;
+  margin-bottom: 1em;
+  width: 40em;
+}
+
+
+.CheckButton {
+  border: none;
+  color: white;
+  background-color: #555555;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+
+
 .Pin{
-  width: 100px;
+  width: 50px ;
   height: 50px;
+  margin-right: 25px;
+  border: 2px solid grey;
+  border-radius: 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.rounds {
+  text-align: center;
+  display:flex;
+  justify-content: space-between;
+}
+
+.RoundNumber {
+  text-align: center;
+  width: 100px;
+  font-size: larger;
+  font-family: 'Segoe UI';
 }
 
 .Pin--red {
@@ -75,8 +130,15 @@
 }
 
 .Hint{
-  width: 50px;
-  height: 25px;
+  width: 30px ;
+  height: 30px;
+  margin-right: 2px;
+  border: 2px solid grey;
+  border-radius: 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 
 .Hint--fits{
@@ -87,7 +149,7 @@
   background-color: grey;
  }
 
- .Hint--partially{
+ .Hint--not_at_all{
   background-color: white;
  }
 
@@ -97,12 +159,44 @@
 
  .End--WON {
    background-color: greenyellow; 
+   display:flex;
+   height: 50px;
+   justify-content: space-between;
+   border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
  }
 
- .End--LOST {
-  background-color: red; 
+ .WON {
+  text-align: center;
+  width: 500px;
+  padding-top: 15px;
 }
 
+ .End--LOST {
+  background-color: red;
+  display:flex;
+  height: 50px;
+  justify-content: space-between;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.LOST {
+  color: white;
+  text-align: center;
+  width: 500px;
+  padding-top: 15px;
+}
+
+.NewGame {
+  border: none;
+  color: white;
+  background-color: #555555;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
 
 
 

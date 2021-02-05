@@ -11,14 +11,14 @@ function App() {
   const [model, setModel] = useState(initialModel())
   const { getAssumedColor, changeColor, check, reset } = createModel(model, setModel)
   return (
-    <div>
+    <div className = "container">
       <h1>MASTERMIND</h1>
-      <div>
+      <div className= "UserColor">
         <Pin color={getAssumedColor(0)} change={() => changeColor(0)}></Pin>
         <Pin color={getAssumedColor(1)} change={() => changeColor(1)}></Pin>
         <Pin color={getAssumedColor(2)} change={() => changeColor(2)}></Pin>
         <Pin color={getAssumedColor(3)} change={() => changeColor(3)}></Pin>
-        <button onClick={check}>Check</button>
+        <button className="CheckButton" onClick={check}>Check</button>
       </div>
       { model.rounds.map((round) => {
         let userRound;
@@ -32,6 +32,7 @@ function App() {
             <Hint color={round.result[1]}></Hint>
             <Hint color={round.result[2]}></Hint>
             <Hint color={round.result[3]}></Hint>
+            <p className= "RoundNumber">{userRound = round.round + 2 }</p>
           </div>)
         } else {
         }

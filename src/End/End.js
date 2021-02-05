@@ -9,12 +9,12 @@ export default function End({ result, reset }) {
 
     if (result === "WON") {
         return (<div className={classes.join(" ")} >
-            <div> WON </div>
+            <div className= "WON"> YOU WON! </div>
             <button className="NewGame" onClick={ reset }>New Game</button>
         </div>)
     } else if (result === "LOST") {
         return (<div className={classes.join(" ")} >
-        <div> LOST </div>
+        <div className= "LOST"> Sorry, but you guessed wrong. Please try it again </div>
         <button className="NewGame" onClick={ reset }>New Game</button>
     </div>)
     }
